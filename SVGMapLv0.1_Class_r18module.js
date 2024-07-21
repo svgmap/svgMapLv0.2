@@ -1817,6 +1817,7 @@ class SvgMap {
 	getRootCrs( ){ return (this.#mapViewerProps.rootCrs) };
 	getRootLayersProps(...params){ return (this.#layerManager.getRootLayersProps(...params)) };
 	getRootViewBox( ){ return (this.#mapViewerProps.rootViewBox) };
+	getSvgMapAuthoringTool( ){ return (this.#svgMapAuthoringTool) };
 	getSvgImages( ){ return (this.#svgImages) };
 	getSvgImagesProps( ){ return (this.#svgImagesProps) };
 	getSvgMapLayerUI(){ return ( this.#svgMapLayerUI)};
