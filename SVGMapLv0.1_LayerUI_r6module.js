@@ -127,9 +127,13 @@ class SvgMapLayerUI {
 
 	#layerListOpenClose() {
 		// console.log("layerListOpenClose");
-		if (this.#layerList.style.height == this.#layerListFoldedHeight + "px") { // layer list is colsed
+		this.#layerTableDiv = document.getElementById("layerTableDiv");
+		let isOpen = this.#layerTableDiv.style.display != "none";
+		if (!isOpen) {
+			// layer list close to open
 			this.#setLayerListOpenClose(true);
-		} else { // opened
+		} else {
+			// layer list open to close
 			this.#setLayerListOpenClose(false);
 		}
 	}
@@ -137,14 +141,14 @@ class SvgMapLayerUI {
 	#setLayerListOpenClose(openFlg) {
 		var uiOpenBtn = document.getElementById("layerListOpenButton");
 		this.#layerTableDiv = document.getElementById("layerTableDiv");
-		if (openFlg && (this.#layerList.style.height == this.#layerListFoldedHeight + "px")) {
+		if (openFlg) {
 			// layer list close to open
 			this.#updateLayerTable();
 			this.#layerList.style.height = this.#layerListMaxHeightStyle;
 			uiOpenBtn.firstChild.src = BuiltinIcons.UTpng;
 			this.#layerTableDiv.style.display = "";
 			this.#uiOpened = true;
-		} else if (!openFlg && (this.#layerList.style.height != this.#layerListFoldedHeight + "px")) {
+		} else {
 			// layer list open to close
 			this.#layerList.style.height = this.#layerListFoldedHeight + "px";
 			uiOpenBtn.firstChild.src = BuiltinIcons.DTpng;
