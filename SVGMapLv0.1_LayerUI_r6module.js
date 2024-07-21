@@ -93,6 +93,7 @@ class SvgMapLayerUI {
 	#layerListmessageHead = "Layer List: ";
 	#layerListmessageFoot = " layers visible";
 
+	#layerlistToggleDisasbled = false;
 
 	constructor(svgMapObj, layerSpecificWebAppHandlerObj) {
 		this.#svgMap = svgMapObj;
@@ -483,6 +484,8 @@ class SvgMapLayerUI {
 		this.#layerGroupStatus = new Object();
 		this.#layerList = document.getElementById("layerList");
 
+		this.#layerlistToggleDisasbled = (this.#layerList.dataset.layerlistToggleDisasbled != undefined);
+
 		var llUItop;
 		if (this.#layerList) {
 
@@ -490,12 +493,16 @@ class SvgMapLayerUI {
 
 			llUItop = document.createElement("div");
 			this.#initLayerListUiTopLabelElem(llUItop);
-			this.#initLayerListUiTopButtonElem(llUItop);
+			if (!this.#layerlistToggleDisasbled) {
+				this.#initLayerListUiTopButtonElem(llUItop);
+			}
 			this.#initLayersCustomizerIcon(llUItop);
 
 			this.#layerList.appendChild(llUItop);
 
 			this.#initLayerListUiElem();
+
+			this.#updateLayerTable();
 		}
 		window.setTimeout(function (llUItop) { this.#initLayerListStep2(llUItop) }.bind(this), 30, llUItop);
 	}
@@ -560,7 +567,12 @@ class SvgMapLayerUI {
 		llUIdiv.style.width = "100%";
 		llUIdiv.style.height = "100%";
 		llUIdiv.style.overflowY = "scroll";
-		llUIdiv.style.display = "none";
+
+		if (!this.#layerlistToggleDisasbled) {
+			llUIdiv.style.display = "none";
+		} else {
+			llUIdiv.style.display = "";
+		}
 
 		this.#layerList.appendChild(llUIdiv);
 
