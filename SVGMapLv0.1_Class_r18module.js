@@ -1817,6 +1817,7 @@ class SvgMap {
 	getRootCrs( ){ return (this.#mapViewerProps.rootCrs) };
 	getRootLayersProps(...params){ return (this.#layerManager.getRootLayersProps(...params)) };
 	getRootViewBox( ){ return (this.#mapViewerProps.rootViewBox) };
+	getSvgMapAuthoringTool( ){ return (this.#svgMapAuthoringTool) };
 	getSvgImages( ){ return (this.#svgImages) };
 	getSvgImagesProps( ){ return (this.#svgImagesProps) };
 	getSvgMapLayerUI(){ return ( this.#svgMapLayerUI)};
@@ -1904,6 +1905,7 @@ class SvgMap {
 	setSummarizeCanvas(val){ this.#summarizeCanvas = val };
 	setUpdateCenterPos(...params){ return (this.#essentialUIs.setUpdateCenterPos(...params))};
 	setZoomRatio( ratio ){ this.#zoomPanManager.setZoomRatio( ratio) };
+	showLayerSpecificUI(...params){ this.#layerSpecificWebAppHandler.showLayerSpecificUI(...params) };
 	showModal(...params){ return (this.#mapTicker.showPoiProperty.showModal(...params))};
 	showPage(...params){ return (this.#mapTicker.showPage(...params))};
 	showUseProperty(...params){ return (this.#mapTicker.showUseProperty(...params))};
